@@ -437,6 +437,16 @@ class TemperatureGuardTest(unittest.TestCase):
         self.assertTrue(_model_supports_temperature("claude-sonnet-4-6"))
         self.assertTrue(_model_supports_temperature("claude-haiku-4-5-20251001"))
 
+    def test_provider_prefix_is_ignored(self):
+        """N-5: OpenRouter называет модель `anthropic/claude-sonnet-5`."""
+        from ai_narrative import _model_supports_temperature
+        self.assertFalse(_model_supports_temperature("anthropic/claude-sonnet-5"))
+        self.assertFalse(_model_supports_temperature("anthropic/claude-opus-4-8"))
+        self.assertFalse(_model_supports_temperature(" Anthropic/Claude-Sonnet-5 "))
+        self.assertTrue(_model_supports_temperature("anthropic/claude-sonnet-4-6"))
+        self.assertTrue(_model_supports_temperature("google/gemini-2.5-pro"))
+        self.assertTrue(_model_supports_temperature(""))
+
 
 # ═══════════════ Sprint 5.2 — фиксы по живым прод-отчётам 2026-06-12 ═══════════
 

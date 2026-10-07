@@ -210,7 +210,10 @@ _TEMPERATURE_UNSUPPORTED_PREFIXES = (
 
 
 def _model_supports_temperature(model: str) -> bool:
-    m = str(model or "")
+    # N-5: через OpenRouter (ANTHROPIC_BASE_URL) имя приходит с префиксом
+    # провайдера — `anthropic/claude-sonnet-5`.  Сравниваем без него, иначе
+    # `temperature` уйдёт в запрос и модель ответит HTTP 400.
+    m = str(model or "").strip().rsplit("/", 1)[-1].lower()
     return not any(m.startswith(p) for p in _TEMPERATURE_UNSUPPORTED_PREFIXES)
 
 
