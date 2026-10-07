@@ -198,7 +198,7 @@ class AggregatedHappyPathTest(HybridTestBase):
         with patch.object(_StubManager, "prefetch_market_data", _prefetch, create=True), \
              patch.object(self.tg, "_analyze_existing_portfolio_sync",
                           lambda *_a, **_k: {"portfolio_source": "aggregated"}), \
-             patch.object(self.tg, "run_gatekeeper",
+             patch.object(self.tg, "run_gatekeeper_for",
                           lambda *_a, **_k: {"critical": [], "warnings": []}), \
              patch.object(self.tg, "_build_pdf_payload", _payload):
             await self.real_background(
@@ -443,7 +443,7 @@ class AuditBotFindingsTest(HybridTestBase):
             patch.object(_StubManager, "prefetch_market_data", _prefetch, create=True),
             patch.object(self.tg, "_analyze_existing_portfolio_sync",
                          lambda *_a, **_k: dict(results)),
-            patch.object(self.tg, "run_gatekeeper",
+            patch.object(self.tg, "run_gatekeeper_for",
                          lambda *_a, **_k: {"critical": [], "warnings": []}),
             patch.object(self.tg, "_build_pdf_payload", _payload),
             patch.object(self.tg, "render_report_html", lambda *_a, **_k: "<html/>"),

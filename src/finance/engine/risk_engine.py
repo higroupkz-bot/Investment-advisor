@@ -571,7 +571,8 @@ class MAC3RiskEngine:
     def __init__(self, trading_days=252, ewma_halflife=63,
                  reporting_currency: ReportingCurrency | str | None = None,
                  fx_provider=None, risk_mandate: str = "MODERATE",
-                 price_source: str = "freedom"):
+                 price_source: str = "freedom",
+                 tradernet_client: TradernetClient | None = None):
         self.trading_days = trading_days
         # Источник ЦЕН (не портфеля): 'freedom' — живой Tradernet, 'demo' —
         # локальная детерминированная витрина (finance/demo_portfolio.py).
@@ -631,8 +632,10 @@ class MAC3RiskEngine:
                 fx_provider = None
         self.fx_provider = fx_provider
         # Кешируемый клиент Tradernet — переиспользуется между запросами одного
-        # вызова (внутри analyze_all). Keys читаются из env (Cloud Run secret).
-        self._tradernet_client: TradernetClient | None = None
+        # вызова (внутри analyze_all). Без явного клиента ключи читаются из env
+        # (Cloud Run secret). Явный клиент — ключи САМОГО клиента брокера (веб);
+        # для `manual`/`demo` он не используется: провайдер цен его не просит (I-12).
+        self._tradernet_client: TradernetClient | None = tradernet_client
         # Провайдер цен — ленивый, выбирается по self.price_source (Фаза 2).
         self._price_provider = None
         # Audit trail filled by `_apply_fx_conversion` — surfaced into the

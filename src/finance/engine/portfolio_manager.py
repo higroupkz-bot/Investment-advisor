@@ -159,10 +159,13 @@ class UniversalPortfolioManager:
         'Purchase_Price': ['Buy_Price', 'Price_Buy', 'Entry_Price', 'Цена_Покупки', 'Avg_Price']
     }
 
-    def __init__(self, price_source: str = "freedom"):
+    def __init__(self, price_source: str = "freedom", tradernet_client=None):
         # price_source прокидывается в движок и решает, откуда берутся ЦЕНЫ.
         # Дефолт 'freedom' сохраняет поведение всех существующих вызовов.
-        self.engine = MAC3RiskEngine(price_source=price_source)
+        # tradernet_client — клиент на ключах самого пользователя (веб); без него
+        # движок строит сервисный из env. Раньше веб подменял `engine._tradernet_client`.
+        self.engine = MAC3RiskEngine(price_source=price_source,
+                                     tradernet_client=tradernet_client)
 
     def prefetch_market_data(self, candidate_tickers) -> "MarketDataPreview":
         """Public facade for the bot's Step-1 progress panel (H-3).

@@ -120,7 +120,7 @@ class BackgroundReportIsMultiuserSafeTest(unittest.IsolatedAsyncioTestCase):
         self._patches = [
             patch.object(tg_bot, "UniversalPortfolioManager", _Recorder),
             patch("finance.investment_logic.UniversalPortfolioManager", _Recorder),
-            patch.object(tg_bot, "run_gatekeeper",
+            patch.object(tg_bot, "run_gatekeeper_for",
                          lambda *_a, **_k: {"critical": [], "warnings": []}),
             patch.object(tg_bot, "_build_pdf_payload", _payload),
             patch.object(tg_bot, "render_report_html", _render),

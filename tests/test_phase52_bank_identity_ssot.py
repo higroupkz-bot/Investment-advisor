@@ -76,7 +76,7 @@ class RegistryIsTheSingleSourceTest(unittest.TestCase):
         """Литеральный перечень имён у потребителя = пятая копия. Потребители
         обязаны СТРОИТЬ свои regex из реестра."""
         for mod, must_build_from in (("ai_narrative.py", "bank_alias_regex"),
-                                     ("tg_bot.py",       "bank_alias_regex")):
+                                     ("report_pipeline.py", "bank_alias_regex")):
             src = (_SRC / mod).read_text(encoding="utf-8")
             # Комментарии описывают ПРОШЛЫЙ дефект и обязаны называть его
             # своим именем — сканируем только исполняемые строки.

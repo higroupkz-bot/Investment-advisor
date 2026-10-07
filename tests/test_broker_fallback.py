@@ -340,7 +340,7 @@ class FallbackReachesCoveTest(FallbackTestBase):
 
         with patch("finance.investment_logic.UniversalPortfolioManager", _Manager), \
              patch.object(self.tg, "UniversalPortfolioManager", _Manager), \
-             patch.object(self.tg, "run_gatekeeper",
+             patch.object(self.tg, "run_gatekeeper_for",
                           lambda *_a, **_k: {"critical": [], "warnings": []}), \
              patch.object(self.tg, "_build_pdf_payload", _payload):
             await self.tg._run_analysis_background(

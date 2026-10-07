@@ -15,11 +15,11 @@ GCP Cloud Run (long-polling) · Cloud Function (RAG-ингест) · ChromaDB ·
 ## Верификация (обязательна перед каждым пушем)
 
 ```bash
-PYTHONPATH=src python -m pytest tests/ -q          # → 2319 passed, 2 xfailed (+12 skipped без playwright)
+PYTHONPATH=src python -m pytest tests/ -q          # → 2328 passed, 2 xfailed (+12 skipped без playwright)
 ```
 
 - Префикс `PYTHONPATH=src` **ОБЯЗАТЕЛЕН** (`conftest.py`/`pyproject.toml` нет).
-- **Прогонов ДВА.** Второй — зеркало деплой-образа без `design/`: `cp -r src tests SYSTEM_PROMPT.md requirements*.txt <tmp>/ && cd <tmp>`, тот же прогон → 2195 passed, 136 skipped, 2 xfailed.
+- **Прогонов ДВА.** Второй — зеркало деплой-образа без `design/`: `cp -r src tests SYSTEM_PROMPT.md requirements*.txt <tmp>/ && cd <tmp>`, тот же прогон → 2204 passed, 136 skipped, 2 xfailed.
   Зелёный CI ≠ деплой пройдёт: CI видит полный чекаут, Cloud Build — образ; разница — ровно тесты, читающие `design/`, `docs/`, `CLAUDE.md`, `scripts/`, `cloud_function/`.
 - Правил `design/*.jsx` → **обязательно** `bash design/premium_v2/build.sh`.
 - Смоук-рендер тиров: `html_renderer.render_report_html(None, <user_id>, ...)`.
@@ -53,7 +53,7 @@ PYTHONPATH=src python -m pytest tests/ -q          # → 2319 passed, 2 xfailed 
 - Premium-бандлы `src/premium_assets/*` руками НЕ править — только через `build.sh`.
 - Расширил DEEP/BASE-контракт → обнови пин в `tests/test_phase19_block_audit.py`.
 - Приватное `_имя` НЕ ходит между модулями: нужное двоим — публичное (`tests/test_layering.py`).
-- Слой отчёта не импортирует `tg_bot`: это инверсия и затаскивание `aiogram` в рендер.
+- Слой отчёта не импортирует `tg_bot`: это инверсия и затаскивание `aiogram` в рендер. Конвейер отчёта — ТОЛЬКО `report_pipeline`: бот и веб зовут одни функции (`§−135`).
 - `Ticker` позиции — из `canonical_ticker`, НЕ из `resolve_tickers`: второй отдаёт ПРОКСИ,
   и бумага в портфеле подменится (нота → `VWOB`: цена ETF, чужой тип, склейка разных бумаг).
 - Источник портфеля доезжает до `price_source` КАК ЕСТЬ. Свести неизвестный к `freedom` —
@@ -143,7 +143,7 @@ PYTHONPATH=src python -m pytest tests/ -q          # → 2319 passed, 2 xfailed 
 ```
 L4 Delivery  tg_bot.py · entrypoint.py · db_tokenomics.py · services/report_storage.py
 L3 Report    pdf_payload.py → premium_payload.py → premium_renderer.py · html_renderer.py
-             ai_narrative.py · pdf_charts.py · report_charts.py · report_mocks.py
+             ai_narrative.py · pdf_charts.py · report_charts.py · report_mocks.py · report_pipeline.py
              finance/data_lineage.py · finance/scenario_report.py
 L2 Engine    finance/engine/{risk_engine,portfolio_manager,market_preview}.py
              (finance/investment_logic.py — ФАСАД) · scoring*.py · stress.py · simulate.py

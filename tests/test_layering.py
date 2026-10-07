@@ -41,7 +41,7 @@ _PROJECT_ROOTS = {
     "premium_payload", "premium_renderer", "tg_bot", "ai_narrative",
     "html_renderer", "report_mocks", "report_charts", "pdf_charts",
     "batch_reports", "db_tokenomics", "entrypoint", "profile_manager",
-    "env_config", "branding",
+    "env_config", "branding", "report_pipeline",
     # Бот-загрузчик котировок (IB-3). Без записи здесь его импорты считались бы
     # ВНЕШНИМИ, и проверка приватных кросс-импортов прошла бы мимо новых
     # модулей, оставшись зелёной.

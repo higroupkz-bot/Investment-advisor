@@ -41,6 +41,9 @@ REPORT_BOT = frozenset({
     "pdf_payload", "premium_payload", "premium_renderer", "html_renderer",
     "ai_narrative", "pdf_charts", "report_charts", "report_mocks",
     "agent.gatekeeper", "agent.rag_engine",
+    # Фасад конвейера отчёта (Ф2 веб-миграции): тянет ai_narrative/pdf_payload,
+    # поэтому он в боте отчётов, а не в ядре. Веб зовёт его без tg_bot/aiogram.
+    "report_pipeline",
     "finance.data_lineage", "finance.scenario_report", "finance.scenario_engine",
     "finance.portfolio_series", "finance.manual_portfolio", "finance.security",
     # Гибрид (I-15): пакет собирает состав из брокера и ручного ввода, а ручной

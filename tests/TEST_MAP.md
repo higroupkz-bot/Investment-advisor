@@ -25,7 +25,7 @@
 > импорт), то есть когда карта действительно врёт.
 
 
-**Замер:** 105 тест-файлов · 64 модулей `src/` имеют хотя бы один адресный тест-импорт.
+**Замер:** 106 тест-файлов · 65 модулей `src/` имеют хотя бы один адресный тест-импорт.
 
 ## Модуль → тесты
 
@@ -53,7 +53,7 @@
 | `finance.engine.risk_engine` | 1 | `test_phase70_forward_premia.py` |
 | `finance.factor_decomposition` | 1 | `test_factor_decomposition.py` |
 | `finance.inference` | 1 | `test_phase28_risk_methodology_audit.py` |
-| `finance.investment_logic` | 45 | `test_broker_fallback.py` · `test_contracts_results.py` · `test_engine_orchestrator.py` · `test_factor_decomposition.py` · `test_manual_freedom_parity.py` · `test_manual_fsm_flow.py` · `test_manual_portfolio_identity.py` · `test_manual_portfolio_parser.py` · `test_manual_preflight_and_locals.py` · `test_manual_ticker_synonyms.py` · `test_phase13_security.py` · `test_phase14_refactor.py` · `test_phase15_phase3.py` · `test_phase18_sprint5.py` · `test_phase19_block_audit.py` · `test_phase1_fixes.py` · `test_phase20_sprint_refactor.py` · `test_phase22_rag_boot.py` · `test_phase23_scenario.py` · `test_phase25_math_sprint1.py` · `test_phase26_report_fixes.py` · `test_phase27_composite_metrics.py` · `test_phase28_risk_methodology_audit.py` · `test_phase2_modules.py` · `test_phase31_benchmark_factor_propagation.py` · `test_phase32_report_logic_fixes.py` · `test_phase33_effect_reinvest_quality.py` · `test_phase35_demo_showcase.py` · `test_phase35_price_providers.py` · `test_phase36_illiquid_proxy.py` · `test_phase37_position_contract.py` · `test_phase39_report_consistency.py` · `test_phase41_fx_base_currency.py` · `test_phase42_instrument_ssot.py` · `test_phase45_data_checks_wiring.py` · `test_phase46_p2_maintainability.py` · `test_phase47_cove_and_fx_honesty.py` · `test_phase60_math_audit.py` · `test_phase65_return_12m.py` · `test_phase68_stress_rates.py` · `test_phase6_currency_h2.py` · `test_phase70_forward_premia.py` · `test_portfolio_aggregation.py` · `test_stooq_coverage_probe.py` · `test_stooq_provider.py` |
+| `finance.investment_logic` | 46 | `test_broker_fallback.py` · `test_contracts_results.py` · `test_engine_orchestrator.py` · `test_factor_decomposition.py` · `test_manual_freedom_parity.py` · `test_manual_fsm_flow.py` · `test_manual_portfolio_identity.py` · `test_manual_portfolio_parser.py` · `test_manual_preflight_and_locals.py` · `test_manual_ticker_synonyms.py` · `test_phase13_security.py` · `test_phase14_refactor.py` · `test_phase15_phase3.py` · `test_phase18_sprint5.py` · `test_phase19_block_audit.py` · `test_phase1_fixes.py` · `test_phase20_sprint_refactor.py` · `test_phase22_rag_boot.py` · `test_phase23_scenario.py` · `test_phase25_math_sprint1.py` · `test_phase26_report_fixes.py` · `test_phase27_composite_metrics.py` · `test_phase28_risk_methodology_audit.py` · `test_phase2_modules.py` · `test_phase31_benchmark_factor_propagation.py` · `test_phase32_report_logic_fixes.py` · `test_phase33_effect_reinvest_quality.py` · `test_phase35_demo_showcase.py` · `test_phase35_price_providers.py` · `test_phase36_illiquid_proxy.py` · `test_phase37_position_contract.py` · `test_phase39_report_consistency.py` · `test_phase41_fx_base_currency.py` · `test_phase42_instrument_ssot.py` · `test_phase45_data_checks_wiring.py` · `test_phase46_p2_maintainability.py` · `test_phase47_cove_and_fx_honesty.py` · `test_phase60_math_audit.py` · `test_phase65_return_12m.py` · `test_phase68_stress_rates.py` · `test_phase6_currency_h2.py` · `test_phase70_forward_premia.py` · `test_portfolio_aggregation.py` · `test_report_pipeline.py` · `test_stooq_coverage_probe.py` · `test_stooq_provider.py` |
 | `finance.leveraged` | 1 | `test_phase28_risk_methodology_audit.py` |
 | `finance.manual_portfolio` | 4 | `test_manual_fsm_flow.py` · `test_manual_portfolio_identity.py` · `test_manual_portfolio_parser.py` · `test_manual_preflight_and_locals.py` |
 | `finance.period_returns` | 4 | `test_phase26_report_fixes.py` · `test_phase28_risk_methodology_audit.py` · `test_phase4_reporting.py` · `test_phase60_math_audit.py` |
@@ -89,6 +89,7 @@
 | `premium_renderer` | 2 | `test_phase49_contract_reaches_eyes.py` · `test_phase55_mobile_and_dom_gates.py` |
 | `profile_manager` | 1 | `test_phase18_sprint5.py` |
 | `report_charts` | 1 | `test_phase53_kpi_card_parity.py` |
+| `report_pipeline` | 1 | `test_report_pipeline.py` |
 | `services` | 2 | `test_phase51_ingest_bot.py` · `test_phase64_manual_live_report.py` |
 | `services.fx_feed` | 2 | `test_phase25_math_sprint1.py` · `test_phase6_fx_feed.py` |
 | `services.macro_data` | 3 | `test_phase21_recos.py` · `test_phase4_reporting.py` · `test_phase50_report_layer_parity.py` |
